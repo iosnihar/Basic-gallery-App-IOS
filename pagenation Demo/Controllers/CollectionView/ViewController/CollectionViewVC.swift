@@ -12,7 +12,11 @@ import GoogleSignIn
 @available(iOS 16.0, *)
 class CollectionViewVC: UIViewController {
     
+    //MARK: - IBOutlets
+    
     @IBOutlet var collectionView: UICollectionView!
+    
+    //MARK: - Variable
     
     var isLoading = false
     var imageUrls: [String] = []
@@ -32,6 +36,8 @@ class CollectionViewVC: UIViewController {
     var logOutButton : UIBarButtonItem?
     var BackButton : UIBarButtonItem?
     
+    //MARK: - ViewController life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.delegate = self
@@ -47,11 +53,12 @@ class CollectionViewVC: UIViewController {
         logOutButton?.setTitleTextAttributes(titleAttributes, for: .normal)
         self.navigationItem.rightBarButtonItem = logOutButton
         logOutButton?.isHidden = true
-       
+        
         self.title = "CollectionView VC"
         
-        
     }
+    
+    //MARK: - Function methods
     
     @objc func profileButtonTapped() {
         if profilePopupView == nil {
@@ -144,7 +151,7 @@ class CollectionViewVC: UIViewController {
         dismissProfilePopup()
         removeVisualEffectOverlay()
     }
-
+    
     func removeVisualEffectOverlay() {
         visualEffectView?.removeFromSuperview()
         visualEffectView = nil
@@ -189,6 +196,8 @@ class CollectionViewVC: UIViewController {
     }
 }
 
+//MARK: - Extension CollectionView methods
+
 @available(iOS 16.0, *)
 extension CollectionViewVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -215,7 +224,7 @@ extension CollectionViewVC: UICollectionViewDelegate, UICollectionViewDataSource
                 let endIndex = nextIndex + remainingCount
                 
                 isLoading = true // Set loading state to true
-               
+                
                 loadingIndicator.startAnimating()
                 
                 imageUrls.append(contentsOf: arrImgList[nextIndex..<endIndex])

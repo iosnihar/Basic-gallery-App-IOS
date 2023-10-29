@@ -11,10 +11,12 @@ import GoogleSignIn
 @available(iOS 16.0, *)
 class GoogleVC: UIViewController {
     
+    //MARK: - IBOutlets
+    
     @IBOutlet weak var btnSignin: UIButton!
-   
- 
-
+    
+    //MARK: - ViewController life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -34,6 +36,9 @@ class GoogleVC: UIViewController {
         }
         
     }
+    
+    //MARK: - Button Action
+    
    @IBAction func signIn(sender: Any) {
      GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
          if let error = error {
@@ -44,6 +49,9 @@ class GoogleVC: UIViewController {
          self.showMainContent()
      }
    }
+    
+    //MARK: - Function methods
+    
     @objc private func userDidSignInGoogle(_ notification: Notification) {
            // Handle user sign-in using the notification
            showMainContent()

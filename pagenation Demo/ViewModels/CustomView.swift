@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class ProfileBottomPopupView: UIView {
+    
+    //MARK: - Variable
+    
     // Subviews
     let nameLabel = UILabel()
     let emailLabel = UILabel()
@@ -23,7 +26,9 @@ class ProfileBottomPopupView: UIView {
         super.init(coder: aDecoder)
         setupView()
     }
-
+    
+    //MARK: - CustomView
+    
     private func setupView() {
         // Customize the view properties
         backgroundColor = .white
